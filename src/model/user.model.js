@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: [6, "Password must be at least 6 characters"],
-      select:false
+      select: false,
     },
 
     role: {
@@ -48,10 +48,21 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
     otpExpire: {
-      type: Date
-      
-    }
+      type: Date,
+    },
+
+    // Forgot Password Fields
+    resetPasswordToken: {
+      type: String,
+      select: false,
+    },
+
+    resetPasswordExpire: {
+      type: Date,
+      select: false,
+    },
   },
   {
     timestamps: true,
@@ -62,4 +73,3 @@ const userSchema = new mongoose.Schema(
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
-
